@@ -20,5 +20,9 @@ public class MyBookListService {
 	public List<MyBookList> getAllMyBooks(){
 		return  mybook.findAll();
 	}
+	public void deletedById(int id) {
+			mybook.deleteById(id);
+	}
+	
 
 }

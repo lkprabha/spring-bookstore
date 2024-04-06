@@ -16,7 +16,7 @@ import com.bookstore.entity.MyBookList;
 import com.bookstore.service.BookService;
 import com.bookstore.service.MyBookListService;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
@@ -64,6 +64,18 @@ public class BookContoller {
 		return "redirect:/my_books";
 	}
 	
+	@GetMapping("/editBook/{id}")
+	public String editBook(@PathVariable("id")int id,Model model) {
+		Book b= service.getBookById(id);
+		model.addAttribute("book", b);
+		return "bookEdit";
+	}
+	@GetMapping("/deleteBook/{id}")
+	public String deleteBook(@PathVariable("id")int id) {
+		service.deleteById(id);
+		return "redirect:/available_books";
+		
+	}
 	
 	}
 	
